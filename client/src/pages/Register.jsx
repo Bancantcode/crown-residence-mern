@@ -1,4 +1,4 @@
-import styles from '../assets/styles/register.module.scss'
+import styles from '../assets/styles/signup-signin.module.scss'
 import RegisterImage from '/images/signup1.webp'
 import { Link } from 'react-router-dom';
 import { GoogleLogin } from '@react-oauth/google'
