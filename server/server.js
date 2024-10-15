@@ -1,44 +1,37 @@
-// server.js
-const session = require('express-session');
 const express = require('express');
+const mongoose = require('mongoose');
 const passport = require('passport');
-const connectToDatabase = require('./config/database.js');
-const authRoutes = require('./routes/authRoutes');
-const { serializeUser, deserializeUser } = require('./controllers/authController'); // Import the functions
+const session = require('express-session');
+const dotenv = require('dotenv');
+const cors = require('cors'); // Import CORS
 
-require('dotenv').config();
-require('./strategies/googleStrategy'); // Google OAuth strategy
+dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
 
 // Middleware
+app.use(cors({
+    origin: 'http://localhost:5173', // Allow your frontend origin
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allowed HTTP methods
+    credentials: true, // Allow credentials
+}));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-// Passport configuration
-passport.serializeUser(serializeUser); // Use the serializeUser from the controller
-passport.deserializeUser(deserializeUser); // Use the deserializeUser from the controller
-
-// Set up session
-app.use(session({
-    secret: 'kPKSnpJhBl', // strong secret key
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: false } // Set to true if using HTTPS
-  }));
-
-  // Initialize Passport
+app.use(session({ secret: 'secret', resave: false, saveUninitialized: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Connect to MongoDB
-connectToDatabase();
+require('./config/passport');
 
 // Routes
-app.use('/', authRoutes);
+app.use('/auth', require('./routes/auth'));
+app.use('/authGoogle', require('./routes/authGoogle'));
+app.use('/profile', require('./routes/profile'));
 
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// MongoDB connection
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log('MongoDB connected'))
+    .catch(err => console.log(err));
+
+// Start server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
