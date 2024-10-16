@@ -84,15 +84,15 @@ const Register = () => {
           <label>Password *
             <input name="password" value={formData.password} onChange={handleChange} type="password" required />
           </label>
-          <div className={styles.container2}>
-            <label>
-              <input type="checkbox" /> Remember 
-            </label>
-            <button type="submit" className={styles.submit__button} disabled={loading}>
-              {loading ? 'Signing Up...' : 'Sign Up'} <i className="ri-arrow-right-line"></i>
-            </button>
-          </div>
         </form>
+        <div className={styles.container2}>
+          <label>
+            <input type="checkbox" /> Remember 
+          </label>
+          <button type="submit" className={styles.submit__button} disabled={loading}>
+            {loading ? 'Signing Up...' : 'Sign Up'} <i className="ri-arrow-right-line"></i>
+          </button>
+        </div>
         <div>Already have an account? 
           <Link className={styles.new__page} to={"/login"}>Login</Link>
         </div>
