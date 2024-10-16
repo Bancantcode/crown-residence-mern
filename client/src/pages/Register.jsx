@@ -30,7 +30,7 @@ const Register = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post('/auth/register', formData);
+      const response = await axios.post('/auth/register', formData);
       alert('Registration successful! You can now log in.');
       setFormData({ userName: '', email: '', password: '' }); // Reset form
       navigate('/login');
@@ -41,6 +41,7 @@ const Register = () => {
       setLoading(false);
     }
   };
+
 
   const handleGoogleLoginSuccess = async (credentialResponse) => {
     setLoading(true);
@@ -60,31 +61,30 @@ const Register = () => {
     }
 };
 
-  return (
-    <main className={styles.container}>
-      <img src={RegisterImage} alt="Sign Up" />
-      <div className={styles.content__container}>
-        <h1 className={styles.sign}>Sign Up to Crown Residence</h1>
-        <GoogleLogin
-          className={styles.google__login}
-          onSuccess={handleGoogleLoginSuccess}
-          onError={() => {
-            console.log('Login Failed');
-          }}
-          disabled={loading} // Disable if loading
-        />
-        <p className={styles.other__method}>or sign up with email</p>
-        <form className={styles.form} onSubmit={handleSubmit}>
-          <label>Username *
-            <input name="userName" value={formData.userName} onChange={handleChange} type="text" required />
-          </label>
-          <label>Email address *
-            <input name="email" value={formData.email} onChange={handleChange} type="email" required />
-          </label>
-          <label>Password *
-            <input name="password" value={formData.password} onChange={handleChange} type="password" required />
-          </label>
-        </form>
+return (
+  <main className={styles.container}>
+    <img src={RegisterImage} alt="Sign Up" />
+    <div className={styles.content__container}>
+      <h1 className={styles.sign}>Sign Up to Crown Residence</h1>
+      <GoogleLogin
+        className={styles.google__login}
+        onSuccess={handleGoogleLoginSuccess}
+        onError={() => {
+          console.log('Login Failed');
+        }}
+        disabled={loading} // Disable if loading
+      />
+      <p className={styles.other__method}>or sign up with email</p>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <label>Username *
+          <input name="userName" value={formData.userName} onChange={handleChange} type="text" required />
+        </label>
+        <label>Email address *
+          <input name="email" value={formData.email} onChange={handleChange} type="email" required />
+        </label>
+        <label>Password *
+          <input name="password" value={formData.password} onChange={handleChange} type="password" required />
+        </label>
         <div className={styles.container2}>
           <label>
             <input type="checkbox" /> Remember 
@@ -93,12 +93,13 @@ const Register = () => {
             {loading ? 'Signing Up...' : 'Sign Up'} <i className="ri-arrow-right-line"></i>
           </button>
         </div>
-        <div>Already have an account? 
-          <Link className={styles.new__page} to={"/login"}>Login</Link>
-        </div>
+      </form>
+      <div>Already have an account? 
+        <Link className={styles.new__page} to={"/login"}>Login</Link>
       </div>
-    </main>
-  );
+    </div>
+  </main>
+);
 };
 
 export default Register;
