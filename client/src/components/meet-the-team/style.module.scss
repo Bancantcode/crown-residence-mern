@@ -1,0 +1,19 @@
+.main {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--second-black);
+    
+    .gallery{
+        width: 70%;
+        
+        .category {
+            color: var(--orange-color);
+        }
+    }
+
+    p {
+        margin-bottom: .5em;
+    }
+}
