@@ -1,8 +1,12 @@
 import React from 'react'
+import Header from '../components/header'
 
 const Property = () => {
   return (
-    <div>Property</div>
+    <main>
+      <Header />
+      <div>Property</div>
+    </main>
   )
 }
 

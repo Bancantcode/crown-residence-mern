@@ -70,17 +70,18 @@ const Login = () => {
             />
           </label>
           <div className={styles.container2}>
-            <label>
-              <input type="checkbox" /> Remember 
-            </label>
+            <label className={styles.checkbox}><input type="checkbox" className={styles.box} /> Remember </label>
             <button type="submit" className={styles.submit__button}>
               Sign In<i className="ri-arrow-right-line"></i>
             </button>
-            <div>Don't have an account? 
+            <div>Don&apos;t have an account? 
               <Link className={styles.new__page} to={"/register"}>Create Account</Link>
             </div>
           </div>
         </form>
+      </div>
+      <div className={styles.home}>
+        <Link to={"/"}><img className={styles.home__nav} src="/images/home.png" width={50} height='50' /></Link>
       </div>
     </main>
   );

@@ -76,19 +76,11 @@ return (
       />
       <p className={styles.other__method}>or sign up with email</p>
       <form className={styles.form} onSubmit={handleSubmit}>
-        <label>Username *
-          <input name="userName" value={formData.userName} onChange={handleChange} type="text" required />
-        </label>
-        <label>Email address *
-          <input name="email" value={formData.email} onChange={handleChange} type="email" required />
-        </label>
-        <label>Password *
-          <input name="password" value={formData.password} onChange={handleChange} type="password" required />
-        </label>
+        <label>Username *<input name="userName" value={formData.userName} onChange={handleChange} type="text" required /></label>
+        <label>Email address *<input name="email" value={formData.email} onChange={handleChange} type="email" required /></label>
+        <label>Password *<input name="password" value={formData.password} onChange={handleChange} type="password" required /></label>
         <div className={styles.container2}>
-          <label>
-            <input type="checkbox" /> Remember 
-          </label>
+          <label className={styles.checkbox}><input className={styles.box} type="checkbox" />Remember</label>
           <button type="submit" className={styles.submit__button} disabled={loading}>
             {loading ? 'Signing Up...' : 'Sign Up'} <i className="ri-arrow-right-line"></i>
           </button>
@@ -97,6 +89,9 @@ return (
       <div>Already have an account? 
         <Link className={styles.new__page} to={"/login"}>Login</Link>
       </div>
+    </div>
+    <div className={styles.home}>
+        <Link to={"/"}><img className={styles.home__nav} src="/images/home.png" width={50} height='50' /></Link>
     </div>
   </main>
 );

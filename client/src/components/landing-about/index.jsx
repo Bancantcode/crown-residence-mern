@@ -21,18 +21,10 @@ const Index = () => {
             <div className={styles.about__image}>
                 <img className={styles.main__image} src={Image1} alt={blur} />
                 <div className={styles.four__image}>
-                    <div>
-                        <img src={Image2} alt={blur} />
-                    </div>
-                    <div>
-                        <img src={Image3} alt={blur} />
-                    </div>
-                    <div>
-                        <img src={Image4} alt={blur} />
-                    </div>
-                    <div>
-                        <img src={Image5} alt={blur} />
-                    </div>
+                    <div><img src={Image2} alt={blur} /></div>
+                    <div><img src={Image3} alt={blur} /></div>
+                    <div><img src={Image4} alt={blur} /></div>
+                    <div><img src={Image5} alt={blur} /></div>
                 </div>
             </div>
         </div>
