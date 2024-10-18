@@ -31,6 +31,10 @@
 
         img {
             width: 10vw;
+            filter: grayscale(100%);
+            // &:hover {
+            //     filter: grayscale(20%);
+            // }
         }
     }
 }
