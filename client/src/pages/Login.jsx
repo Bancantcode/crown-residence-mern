@@ -23,12 +23,31 @@ const Login = () => {
       });
 
       console.log('Login successful:', response.data);
-      // Save the token or handle successful login (e.g., redirect)
-      localStorage.setItem('token', response.data.token); // Store token
+      // Save the token and username
+      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('username', response.data.username);
       navigate('/'); // Redirect to the home page or dashboard
     } catch (error) {
       console.error('Login failed:', error.response?.data || error.message);
       setErrorMessage(error.response?.data?.message || 'Login failed! Please try again.');
+    }
+  };
+
+  const handleGoogleLoginSuccess = async (credentialResponse) => {
+    const token = credentialResponse?.credential;
+    const decoded = jwtDecode(token);
+    console.log(decoded);
+
+    try {
+      const response = await axios.post('http://localhost:5000/authGoogle/google/callback', { token });
+      console.log('Google login successful:', response.data);
+      // Save the token and username
+      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('username', response.data.username);
+      navigate('/'); // Redirect to the home page or dashboard
+    } catch (error) {
+      console.error('Google login failed:', error.response?.data || error.message);
+      setErrorMessage(error.response?.data?.message || 'Google login failed! Please try again.');
     }
   };
 
@@ -38,13 +57,9 @@ const Login = () => {
       <div className={styles.content__container}>
         <h1 className={styles.sign}>Sign In to Crown Residence</h1>
         <GoogleLogin
-          onSuccess={credentialResponse => {
-            const decoded = jwtDecode(credentialResponse?.credential);
-            console.log(decoded);
-            // Send the token to your backend for verification and login
-          }}
+          onSuccess={handleGoogleLoginSuccess}
           onError={() => {
-            console.log('Login Failed');
+            console.log('Google Login Failed');
           }}
         />
         <p className={styles.other__method}>or sign in with email</p>
