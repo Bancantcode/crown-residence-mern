@@ -30,9 +30,29 @@
         .about__content {
             flex: 1;
             p {
-                color: var(--gray-color);
                 line-height: 135%;
                 opacity: .95;
+                color: var(--gray-color);
+                font-size: var(--text-base);
+                &:nth-of-type(2) {
+                    margin-bottom: var(--space-lg);
+                }
+            }
+            a {
+                color: var(--body-color);
+                background-color: var(--black-color);
+                padding: var(--button-space-y) var(--button-space-x);
+                border-radius: .25em;
+                font-size: var(--text-base);
+                i {
+                    background-color: var(--white-color);
+                    color: var(--black-color);
+                    font-weight: bold;
+                    border-radius: .15em;
+                    margin-left: var(--space-sm);
+                    padding: var(--space-3xs);
+                    font-size: var(--text-base--large);
+                }
             }
         }
         .about__image {
@@ -164,6 +184,7 @@
 
 @media screen and (min-width: 1567px) {
     .container {
+        padding: 4.5em 4rem;
         .about__flex {
             .about__content {
                 padding-right: 0;

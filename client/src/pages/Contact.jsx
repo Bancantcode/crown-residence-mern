@@ -5,8 +5,7 @@ import ContactImage2 from '/images/contact image.jpg';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState, useContext } from 'react';
 import axios from '../api/axios';
-
-
+import Header from '../components/header'
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -46,6 +45,8 @@ const Contact = () => {
   };
 
   return (
+    <>
+      <Header />
     <main  className={styles.header}>
       <img src={ContactImage} alt="Contact" />
       <div className={styles.content__container}>
@@ -127,17 +128,8 @@ const Contact = () => {
           </div>
       </div>
       <br></br>
-
-    
-      
-      
-      
-      
-      
-
     </main>
-
-    
+    </>
   );
 };
 
