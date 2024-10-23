@@ -1,14 +1,17 @@
 import About from '../components/landing-about';
+// import Header from '../components/header';
+import Showcase from '../components/landing-showcase';
 import Team from '../components/landing-meet-the-team';
-import Header from '../components/header';
+import Property from '../components/landing-property';
 
 const Home = () => {
   return (
     <main>
-      <Header />
+      {/* <Header /> */}
       <About />
+      <Showcase />
       <Team />
-      <h1>This is home</h1>
+      <Property />
     </main>
   )
 }
