@@ -5,6 +5,8 @@ import Login from './pages/Login';
 import About from './pages/About';
 import Blog from './pages/Blog';
 import Property from './pages/Property';
+import ViewProperty from './pages/ViewProperty';
+import ReservedProperty from './pages/ReservedProperty';
 import Contact from './pages/Contact';
 
 function App() {
@@ -17,8 +19,9 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/property" element={<Property />} />
+        <Route path="/view-property" element={<ViewProperty />} />
+        <Route path="/reserved-property" element={<ReservedProperty />} />
         <Route path="/contact" element={<Contact />} />
-        {/* Add more routes as needed */}
       </Routes>
     </Router>
   );

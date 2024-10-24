@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=News+Cycle:wght@400;700&family=Pixelify+Sans:wght@400..700&family=Tiny5&display=swap');
-
 @font-face {
   font-family: 'Neue Montreal Regular', sans-serif;
   src: url('../public/fonts/NeueMontreal-Regular.otf');
@@ -27,6 +26,7 @@
   font-weight: 600;
   font-style: normal;
 }
+
 
 :root {
   --text-base--small: clamp(0.821rem, 0.3071rem + 0.4647vi, 0.8943rem);
