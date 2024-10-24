@@ -44,22 +44,23 @@ const Register = () => {
 
 
   const handleGoogleLoginSuccess = async (credentialResponse) => {
-    setLoading(true);
+    const token = credentialResponse?.credential;
+    const decoded = jwtDecode(token);
+    console.log(decoded);
+
     try {
-        const { credential } = credentialResponse;
-        console.log('Credential Token:', credential); // Check this value
-
-        const response = await axios.get('/authGoogle/google/callback', { params: { token: credential } });
-
-        console.log('Response from server:', response.data);
-        // Continue your logic...
-    } catch (err) {
-        console.error('Google Login Failed:', err);
-        alert(err.response?.data?.message || 'Google login failed!');
-    } finally {
-        setLoading(false);
+      const response = await axios.post('http://localhost:5000/authGoogle/google/callback', { token });
+      console.log('Google login successful:', response.data);
+      // Save the token and username
+      localStorage.setItem('token', response.data.token);
+      localStorage.setItem('username', response.data.username);
+      navigate('/'); // Redirect to the home page or dashboard
+    } catch (error) {
+      console.error('Google login failed:', error.response?.data || error.message);
+      setErrorMessage(error.response?.data?.message || 'Google login failed! Please try again.');
     }
-};
+  };
+
 
 return (
   <main className={styles.container}>
