@@ -44,7 +44,8 @@ router.post('/google/callback', async (req, res) => {
         // Generate a JWT token to return to the client
         const jwtToken = jwt.sign({ id: user._id, email: user.email, userName: user.userName }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-        return res.json({ success: true, token: jwtToken, username: user.userName }); // Return the JWT token and username
+        // Include userID in the response
+        return res.json({ success: true, token: jwtToken, username: user.userName, userID: user._id }); // Return the JWT token, username, and userID
     } catch (error) {
         console.error('Error during token verification:', error);
         return res.status(400).json({ success: false, message: 'Invalid token' });

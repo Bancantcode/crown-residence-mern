@@ -1,71 +1,58 @@
-import style from '../assets/styles/property.module.scss';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom'; // Ensure this is imported
+import styles from '../assets/styles/property.module.scss';
 import Header from '../components/header';
-import image1 from '/images/1.webp';
-import image2 from '/images/6.webp';
-import image3 from '/images/11.webp';
-import image4 from '/images/16.webp';
-
 
 const Property = () => {
+  const [properties, setProperties] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch properties from the backend
+  useEffect(() => {
+    const fetchProperties = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/properties'); // Your API endpoint
+        const data = await response.json();
+        setProperties(data);  // Store properties in state
+        setLoading(false);    // Set loading to false
+      } catch (error) {
+        console.error('Failed to fetch properties', error);
+        setLoading(false);    // Set loading to false
+      }
+    };
+
+    fetchProperties();
+  }, []);
+
+  if (loading) {
+    return <p>Loading properties...</p>;
+  }
+
   return (
     <main>
       <Header />
-      {/* create a template */}
-      <div className={style.container}>
-        <div className={style.item_container}>
-          <div className={style.item}>
-            <img src={image1} alt="" />
-            <section className={style.info}>
-              <div className={style.title}>
-                <h3>Paradise Escape</h3>
-                <p>San Fernando, Pampanga, Philippines</p>
-              </div>
-              <p className={style.rate}><span>$100</span>/ nights</p>
-              <p className={style.rent}>Whole Home</p>
-              <p className={style.desc}>Nestled amidst lush greenery, Villa Serene Heights offers a perfect blend of luxury and tranquility. This modern Mediterranean-inspired home features expansive ... </p>
-            </section>
-          </div>
-          <div className={style.item}>
-            <img src={image2} alt="" />
-            <section className={style.info}>
-              <div className={style.title}>
-                <h3>Villa Serene Heights</h3>
-                <p>Angeles City, Pampanga, Philippines</p>
-              </div>
-              <p className={style.rate}><span>$100</span>/ nights</p>
-              <p className={style.rent}>Whole Home</p>
-              <p className={style.desc}>Nestled amidst lush greenery, Villa Serene Heights offers a perfect blend of luxury and tranquility. This modern Mediterranean-inspired home features expansive/Nestled amidst lush greenery, Villa Serene Heights offers a perfect blend of luxury and tranquility. This modern Mediterranean-inspired home features expansive/Nestled amidst lush greenery, Villa Serene Heights offers a perfect blend of luxury and tranquility. This modern Mediterranean-inspired home features expansive </p>
-            </section>
-          </div>
-          <div className={style.item}>
-            <img src={image3} alt="" />
-            <section className={style.info}>
-              <div className={style.title}>
-                <h3>Paradise Height Villa</h3>
-                <p>San Fernando, Pampanga, Philippines</p>
-              </div>
-              <p className={style.rate}><span>$100</span>/ nights</p>
-              <p className={style.rent}>Whole Home</p>
-              <p className={style.desc}>Nestled amidst lush greenery, Villa Serene Heights offers a perfect blend of luxury and tranquility. This modern Mediterranean-inspired home features expansive/Nestled amidst lush greenery, Villa Serene Heights offers a perfect blend of luxury and tranquility. This modern Mediterranean-inspired home features expansive/Nestled amidst lush greenery, Villa Serene Heights offers a perfect blend of luxury and tranquility. This modern Mediterranean-inspired home features expansive </p>
-            </section>
-          </div>
-          <div className={style.item}>
-            <img src={image4} alt="" />
-            <section className={style.info}>
-              <div className={style.title}>
-                <h3>Golden Meadow Lodge</h3>
-                <p>Angeles City, Pampanga, Philippines</p>
-              </div>
-              <p className={style.rate}><span>$100</span>/ nights</p>
-              <p className={style.rent}>Whole Home</p>
-              <p className={style.desc}>Nestled amidst lush greenery, Villa Serene Heights offers a perfect blend of luxury and tranquility. This modern Mediterranean-inspired home features expansive/Nestled amidst lush greenery, Villa Serene Heights offers a perfect blend of luxury and tranquility. This modern Mediterranean-inspired home features expansive/Nestled amidst lush greenery, Villa Serene Heights offers a perfect blend of luxury and tranquility. This modern Mediterranean-inspired home features expansive </p>
-            </section>
-          </div>
+      <div className={styles.container}>
+        <div className={styles.item_container}>
+          {properties.map((property) => (
+            <Link to={`/properties/${property._id}`} key={property._id} className={styles.item}>
+              <img src={property.imagePaths[0]} alt={property.propertyName} />
+              <section className={styles.info}>
+                <div className={styles.title}>
+                  <h3>{property.propertyName}</h3>
+                  <p>{`${property.location.city}, ${property.location.province}, ${property.location.country}`}</p>
+                </div>
+                <p className={styles.rate}>
+                  <span>{property.pricePerNight}</span>/ nights
+                </p>
+                <p className={styles.rent}>Whole Home</p>
+                <p className={styles.desc}>{property.description.overview}</p>
+              </section>
+            </Link>
+          ))}
         </div>
       </div>
     </main>
-  )
-}
+  );
+};
 
-export default Property
+export default Property;
