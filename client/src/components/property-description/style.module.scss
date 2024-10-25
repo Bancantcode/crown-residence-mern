@@ -1,21 +1,123 @@
 .container {
-    padding: 4.5em 2rem;
+    width: 100%;
+    padding: 0 2rem 4.5em 2rem;
+
+    .content {
+        .location {
+            color: var(--gray-color);
+            text-transform: uppercase;
+            font-size: var(--text-base);
+        }
+
+        .property__name {
+            font-size: var(--heading-1);
+            letter-spacing: -0.0275px;
+            line-height: 100%;
+            font-weight: bold;
+            margin-bottom: var(--space-xs);
+        }
+
+        .flex {
+            display: flex;
+            font-size: var(--text-base);
+            gap: 15px;
+            margin-bottom: var(--space-xs);
+            font-size: var(--text-base);
+        }
+
+        .hosted__by {
+            font-size: var(--heading-5);
+            border-top: 1px solid var(--black-color);
+            border-bottom: 1px solid var(--black-color);
+            padding: var(--space-xs) 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-md);
+        }
+
+        .description {
+            width: 100%;
+            font-size: var(--heading-6);
+            line-height: 120%;
+            color: var(--gray-color);
+        }
+
+        .feedback {
+            .review {
+                display: flex;
+                justify-content: space-between;
+                div {
+                    width: 40%;
+                }
+            }
+        }
+    }
 }
 
 @media screen and (max-width: 768px) {
+    .container {
+        padding: 0 1rem 4.5em 1rem;
+        .content {
+            .property__name {
+                font-size: var(--heading-2);
+            }
+            .description {
+                width: 100%;
+                line-height: 120%;
+            }
     
+            .feedback {
+                .review {
+                    display: flex;
+                    justify-content: space-between;
+                    div {
+                        width: 40%;
+                    }
+                }
+            }
+        }
+    }
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
-    
+    .container {
+        .content {
+            .hosted__by {
+                width: 80%;
+            }
+            .description {
+                width: 80%;
+            }
+        }
+    }
 }
 
 @media screen and (min-width: 1024px) {
-    
+    .container {
+        .content {
+            .hosted__by {
+                width: 60%;
+            }
+            .description {
+                width: 60%;
+            }
+        }
+    }
 }
 
 @media screen and (min-width: 1567px) {
     .container {
-        padding: 4.5em 2rem;
+        padding: 0 10.5rem 4em 10.5rem;
+        width: 60%;
+        .content {
+            .hosted__by {
+                width: 100%;
+            }
+    
+            .description {
+                width: 100%;
+            }
+        }
     }
 }

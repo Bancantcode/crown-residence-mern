@@ -44,23 +44,30 @@ const Description = ({ propertyId }) => {
         <span className={styles.location}>{`${propertyData.location.city}, ${propertyData.location.province}, ${propertyData.location.country}`}</span>
         <h2 className={styles.property__name}>{propertyData.propertyName}</h2>
         <div className={styles.flex}>
-          <p><img src={Bedroom} alt="bedroom" height="30" /> {propertyData.features.bedrooms} bedrooms</p>
-          <p><img src={Bath} alt="bath" height="30" /> {propertyData.features.baths} baths</p>
-          <p><img src={Beds} alt="beds" height="30" /> {propertyData.features.beds} beds</p>
-          <p><img src={Guest} alt="guests" height="30" /> {propertyData.features.guests} guests</p>
+          <p><img src={Bedroom} alt="bedroom" height="25" /> {propertyData.features.bedrooms} bedrooms</p>
+          <p><img src={Bath} alt="bath" height="25" /> {propertyData.features.baths} baths</p>
+          <p><img src={Beds} alt="beds" height="25" /> {propertyData.features.beds} beds</p>
+          <p><img src={Guest} alt="guests" height="25" /> {propertyData.features.guests} guests</p>
         </div>
-        <h2 className={styles.hosted__by}>Hosted by {propertyData.host} <i className="ri-arrow-right-up-line"></i></h2>
+        <h5 className={styles.hosted__by}>Hosted by {propertyData.host} <i className="ri-arrow-right-up-line"></i></h5>
         <div className={styles.description}>
           <p>{propertyData.description.overview}</p>
         </div>
-        <div className={styles.feedback}>
+        {/* <div className={styles.feedback}>
           {propertyData.reviews.map((review, index) => (
             <div key={index} className={styles.review}>
-              <p>{review.content}</p>
-              <p className={styles.name}>{review.reviewerName}</p>
+              <div>
+                <p>{review.content}</p>
+                <p className={styles.name}>{review.reviewerName}</p>
+              </div>
+              <div>
+                <p>{review.content}</p>
+                <p className={styles.name}>{review.reviewerName}</p>
+              </div>
             </div>
+            
           ))}
-        </div>
+        </div> */}
       </div>
       {/* <div className={styles.date}></div> */}
     </section>

@@ -43,16 +43,17 @@
             
             .content__title {
                 font-size: var(--heading-2);
-                letter-spacing: -1px;
                 line-height: 100%;
                 margin-bottom: var(--space-xs);
-
+                font-weight: 500;
+                letter-spacing: -1px;
             }
             
             p {
                 margin-bottom: var(--space-md);
                 color: var(--gray-color);
-                font-size: var(--text-base);
+                // font-size: var(--text-base);
+                font-size: var(--heading-6);
             }        
         }
     }
@@ -75,11 +76,14 @@
                 font-size: var(--heading-2);
                 line-height: 100%;
                 margin-bottom: var(--space-xs);
+                font-weight: 500;
+                letter-spacing: -1px;
             }
 
             p {
                 color: var(--gray-color);
-                font-size: var(--text-base);
+                // font-size: var(--text-base);
+                font-size: var(--heading-6);
                 margin-bottom: var(--space-lg);
             }
         }
