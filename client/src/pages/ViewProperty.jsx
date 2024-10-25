@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import PropertyImage from '../components/property-image';
 import PropertyDescription from '../components/property-description';
 import PropertyDate from '../components/property-date';
-import { useParams } from 'react-router-dom';
+import Header from '../components/header'
 
 const ViewProperty = () => {
-  const { id } = useParams(); // Get the property ID from URL parameters
+  const { id } = useParams();
   const [property, setProperty] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -13,7 +14,7 @@ const ViewProperty = () => {
     const fetchSelectedProperty = async () => {
       if (!id) {
         console.error('ID is undefined.');
-        return; // Prevent fetching if ID is undefined
+        return;
       }
 
       try {
@@ -24,10 +25,12 @@ const ViewProperty = () => {
         }
         
         const data = await response.json();
-        setProperty(data); // Set the property data
-      } catch (error) {
+        setProperty(data);
+      } 
+      catch (error) {
         console.error('Error fetching selected property:', error);
-      } finally {
+      } 
+      finally {
         setLoading(false);
       }
     };
@@ -47,8 +50,9 @@ const ViewProperty = () => {
 
   return (
     <main>
+      <Header />
       <PropertyImage propertyId={property._id} />
-      <PropertyDescription propertyId={property._id} /> {/* Pass propertyId instead */}
+      <PropertyDescription propertyId={property._id} />
       <PropertyDate propertyId={property._id} fetchBookedDatesUrl={fetchBookedDatesUrl} />
     </main>
   );

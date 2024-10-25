@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'; // Ensure this is imported
+import { Link } from 'react-router-dom';
 import styles from '../assets/styles/property.module.scss';
 import Header from '../components/header';
 
@@ -7,17 +7,17 @@ const Property = () => {
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Fetch properties from the backend
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const response = await fetch('http://localhost:5000/properties'); // Your API endpoint
+        const response = await fetch('http://localhost:5000/properties');
         const data = await response.json();
-        setProperties(data);  // Store properties in state
-        setLoading(false);    // Set loading to false
-      } catch (error) {
+        setProperties(data);
+        setLoading(false);
+      } 
+      catch (error) {
         console.error('Failed to fetch properties', error);
-        setLoading(false);    // Set loading to false
+        setLoading(false); 
       }
     };
 

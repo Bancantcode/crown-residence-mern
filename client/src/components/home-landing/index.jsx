@@ -48,7 +48,7 @@ const Landing = () => {
                 </div>
                 <div className={styles.details}>
                     <p>Experience unparalleled luxury in the most coveted residences, where design meets sophistication and every detail reflects excellence.</p>
-                    <a href="#about">Explore<i className="ri-arrow-right-line"></i></a>
+                    <a href="/property">Explore<i className="ri-arrow-right-line"></i></a>
                 </div>
             </div>
         </div>

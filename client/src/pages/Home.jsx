@@ -8,7 +8,7 @@ import Property from '../components/landing-property';
 const Home = () => {
   return (
     <main>
-      {/* <Header /> */}
+      <Header />
       <Landing />
       <About />
       <Showcase />
