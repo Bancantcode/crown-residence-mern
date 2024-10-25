@@ -33,7 +33,8 @@ export default function CustomDateRangePicker({
         if (!bookedDatesResponse.ok) throw new Error("Failed to fetch booked dates");
         const bookedDatesData = await bookedDatesResponse.json();
         setBookedDates(bookedDatesData);
-      } catch (err) {
+      } 
+      catch (err) {
         setError(err.message);
       }
     };
@@ -110,16 +111,10 @@ export default function CustomDateRangePicker({
 
   return (
     <section className={styles.container}>
-      <div className={className}>
+      <div className={styles.className}>
         {error && <p className={styles.error}>{error}</p>}
-        <div>
-          <DatePicker
-            selected={dateRange.from}
-            onChange={(date) => handleDateChange(date, "from")}
-            selectsStart
-            startDate={dateRange.from}
-            endDate={dateRange.to}
-            excludeDates={bookedDates.flatMap(({ startDate, endDate }) => {
+        <div className={styles.flex}>
+          <DatePicker className={`${styles.date} ${styles['date-picker']}`} selected={dateRange.from} onChange={(date) => handleDateChange(date, "from")} selectsStart startDate={dateRange.from} endDate={dateRange.to} excludeDates={bookedDates.flatMap(({ startDate, endDate }) => {
               const range = [];
               let currentDate = new Date(startDate);
               while (currentDate <= new Date(endDate)) {
@@ -130,13 +125,7 @@ export default function CustomDateRangePicker({
             })}
             inline
           />
-          <DatePicker
-            selected={dateRange.to}
-            onChange={(date) => handleDateChange(date, "to")}
-            selectsEnd
-            startDate={dateRange.from}
-            endDate={dateRange.to}
-            excludeDates={bookedDates.flatMap(({ startDate, endDate }) => {
+          <DatePicker className={`${styles.date} ${styles['date-picker']}`} selected={dateRange.to} onChange={(date) => handleDateChange(date, "to")} selectsEnd startDate={dateRange.from} endDate={dateRange.to} excludeDates={bookedDates.flatMap(({ startDate, endDate }) => {
               const range = [];
               let currentDate = new Date(startDate);
               while (currentDate <= new Date(endDate)) {
@@ -150,13 +139,13 @@ export default function CustomDateRangePicker({
         </div>
         <hr />
         <div className={styles.cost__breakdown}>
-          <p>Cost Breakdown</p>
+          <p className={styles.cost}>Cost Breakdown</p>
           <p>Start Date: {format(dateRange.from, "MMM dd, yyyy")}</p>
           <p>End Date: {format(dateRange.to, "MMM dd, yyyy")}</p>
           <p>Total Stay: ${pricePerNight} x {Math.max(0, Math.ceil((dateRange.to - dateRange.from) / (1000 * 60 * 60 * 24)))} nights</p>
           <h3>Total: ${(Math.max(0, Math.ceil((dateRange.to - dateRange.from) / (1000 * 60 * 60 * 24))) * (pricePerNight || 0)).toFixed(2)}</h3>
-          <button onClick={reserveBooking} disabled={!pricePerNight}>Reserve Now</button>
-          <button onClick={() => setDateRange({ from: new Date(), to: addDays(new Date(), 7) })}>Clear Date</button>
+          <button onClick={reserveBooking} disabled={!pricePerNight}>Reserve Now<i className="ri-arrow-right-line"></i></button>
+          <button className={styles.clear} onClick={() => setDateRange({ from: new Date(), to: addDays(new Date(), 7) })}>Clear Date<i className="ri-arrow-right-line"></i></button>
         </div>
       </div>
     </section>

@@ -59,6 +59,9 @@
     .container {
         padding: 0 1rem 4.5em 1rem;
         .content {
+            .property__name {
+                font-size: var(--heading-2);
+            }
             .description {
                 width: 100%;
                 line-height: 120%;
