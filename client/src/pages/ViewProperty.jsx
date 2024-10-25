@@ -3,7 +3,8 @@ import { useParams } from 'react-router-dom';
 import PropertyImage from '../components/property-image';
 import PropertyDescription from '../components/property-description';
 import PropertyDate from '../components/property-date';
-import Header from '../components/header'
+import Header from '../components/header';
+import styles from '../assets/styles/viewproperty.module.scss';
 
 const ViewProperty = () => {
   const { id } = useParams();
@@ -52,8 +53,10 @@ const ViewProperty = () => {
     <main>
       <Header />
       <PropertyImage propertyId={property._id} />
-      <PropertyDescription propertyId={property._id} />
-      <PropertyDate propertyId={property._id} fetchBookedDatesUrl={fetchBookedDatesUrl} />
+      <div className={styles.flex}>
+        <PropertyDescription propertyId={property._id} />
+        <PropertyDate propertyId={property._id} fetchBookedDatesUrl={fetchBookedDatesUrl} />
+      </div>
     </main>
   );
 };
