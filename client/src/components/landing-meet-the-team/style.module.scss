@@ -4,16 +4,40 @@
     align-items: center;
     justify-content: center;
     color: var(--second-black);
+    padding: 4.5em 2rem;
     
     .gallery{
-        width: 70%;
+        width: 100%;
         
         .category {
             color: var(--orange-color);
+            font-size: var(--text-base--small);
+            letter-spacing: -.0275em;
+        font-weight: 500;
         }
     }
 
     p {
         margin-bottom: .5em;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .main {
+        height: 70vh;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    .main {
+        height: 80vh;
+        margin-bottom: var(--space-xl);
+    }
+}
+
+@media screen and (min-width: 1567px) {
+    .main {
+        padding: 4.5em 4rem;
+        margin-bottom: var(--space-3xl);
     }
 }

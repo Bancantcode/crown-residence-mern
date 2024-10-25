@@ -40,7 +40,7 @@
     .container {
         .grid {
             grid-template-columns: repeat(4, 1fr);
-            grid-template-rows: repeat(12, 50px);
+            grid-template-rows: repeat(10, 50px);
 
             img {
                 &:nth-of-type(2) {
@@ -63,8 +63,9 @@
 @media screen and (min-width: 1567px) {
     .container {
         padding: 4.5em 4rem;
+        margin-bottom: var(--space-3xl);
         .grid {
-            grid-template-rows: repeat(12, 80px);
+            grid-template-rows: repeat(10, 80px);
         }
     }
 }

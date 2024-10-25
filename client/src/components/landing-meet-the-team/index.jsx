@@ -14,10 +14,10 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <div className={styles.gallery}>
-        <p className={styles.category}>[Meet the Team]</p>
+        <p className={styles.category}>[MEET THE TEAM]</p>
         {
             names.map((name, index) => {
-                return <Names key={index} names={name} src={`Image name ${names.title1} ${names.title2}`}/>
+                return <Names key={index} names={name} className={styles.name} src={`Image name ${names.title1} ${names.title2}`}/>
             })
         }
       </div>
