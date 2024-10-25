@@ -23,9 +23,10 @@ const Login = () => {
       });
 
       console.log('Login successful:', response.data);
-      // Save the token and username
+      // Save the token, username, and userID
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('username', response.data.username);
+      localStorage.setItem('userID', response.data.userID); // Assuming userID is returned here
       navigate('/'); // Redirect to the home page or dashboard
     } catch (error) {
       console.error('Login failed:', error.response?.data || error.message);
@@ -41,9 +42,10 @@ const Login = () => {
     try {
       const response = await axios.post('http://localhost:5000/authGoogle/google/callback', { token });
       console.log('Google login successful:', response.data);
-      // Save the token and username
+      // Save the token, username, and userID
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('username', response.data.username);
+      localStorage.setItem('userID', response.data.userID); // Assuming userID is returned here
       navigate('/'); // Redirect to the home page or dashboard
     } catch (error) {
       console.error('Google login failed:', error.response?.data || error.message);

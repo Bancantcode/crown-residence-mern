@@ -19,7 +19,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/property" element={<Property />} />
-        <Route path="/view-property" element={<ViewProperty />} />
+        <Route path="/properties/:id" element={<ViewProperty />} />
         <Route path="/reserved-property" element={<ReservedProperty />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
