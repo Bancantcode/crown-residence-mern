@@ -1,0 +1,114 @@
+.container{
+    padding: 4.5rem 2rem;
+    width: 100%;
+    .title {
+        font-size: var(--heading-1);
+        letter-spacing: -2px;
+        line-height: 100%;
+        margin-bottom: var(--space-md);
+        span {
+            font-family: "News Cycle", sans-serif;
+        }
+    }
+    .item_container {
+        display: grid;
+        gap: 10px;
+        width: 100%;
+        .booking_details{
+        background-color: var(--black-color);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: relative;
+            img{
+                aspect-ratio: 1/1;
+                height: auto;
+                width: 100%;
+                z-index: -1;
+                margin-bottom: var(--space-xs);
+            }
+            .price{
+                margin: var(--space-2xs);
+                color: var(--body-color);
+                background-color: rgb(0, 0, 0, 0.7);
+                padding: var(--button-space-y) var(--button-space-x);
+                position: absolute;
+                border-radius: 0.25em;
+                top: 0;
+            }
+            p{
+                color: var(--body-color);
+            }
+            .card_title{
+                font-size: var(--heading-3);
+                padding:0 var(--space-2xs);
+                margin-bottom: var(--space-2xs);
+                font-weight: 600;
+                line-height: 100%;
+            }
+            .content{
+                display: flex;
+                justify-content: space-between;
+                gap: var(--space-md);
+                padding: 0 var(--space-2xs) var(--space-xs)  ;
+                font-size: var(--text-base);
+                .dates{
+                    display: flex;
+                    gap:var(--space-2xs);
+                    .start{
+                        border-right: 1px solid var(--body-color);
+                        padding-right: var(--space-2xs);
+                    }
+                }
+            }
+            .button{
+                color: var(--body-color);
+                font-size: var(--text-base);
+                font-weight: 500;
+                display: inline-flex;
+                align-items: center;
+                transition: 0.3s;
+                text-transform: uppercase;
+                width: fit-content;
+                i {
+                    transition: 0.4s;
+                }
+                &:hover i {
+                    margin-left: 10px;
+                }     
+            }
+        }
+        
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .container{
+        .item_container{
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .container{
+        .item_container{
+            gap: 15px;
+            grid-template-columns: repeat(3, 1fr);
+            .booking_details{
+                .card_title{
+                    font-size: var(--heading-4); 
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1567px) {
+    .container{
+        padding: 4.5rem 4rem;
+        .item_container{
+            grid-template-columns: repeat(4, 1fr);
+        }
+    }
+}

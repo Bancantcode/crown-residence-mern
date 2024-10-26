@@ -33,21 +33,22 @@ const Property = () => {
     <main>
       <Header />
       <div className={styles.container}>
+        <div className={styles.about__container}>
+          <h1 className={styles.title}>Crown <span>---</span> Property</h1>
+        </div>
         <div className={styles.item_container}>
           {properties.map((property) => (
             <Link to={`/properties/${property._id}`} key={property._id} className={styles.item}>
+              <div>
               <img src={property.imagePaths[0]} alt={property.propertyName} />
-              <section className={styles.info}>
-                <div className={styles.title}>
-                  <h3>{property.propertyName}</h3>
-                  <p>{`${property.location.city}, ${property.location.province}, ${property.location.country}`}</p>
+                <h3>{property.propertyName}</h3>
+              </div>
+                <div className={styles.content}>
+                  <p className={styles.rate}>
+                    <span>${property.pricePerNight}</span>/night
+                  </p>
+                  <a className={styles.button} href="">View Property</a>
                 </div>
-                <p className={styles.rate}>
-                  <span>{property.pricePerNight}</span>/ nights
-                </p>
-                <p className={styles.rent}>Whole Home</p>
-                <p className={styles.desc}>{property.description.overview}</p>
-              </section>
             </Link>
           ))}
         </div>
