@@ -1,45 +1,20 @@
 .container {
     display: relative;
-    margin-bottom: var(--space-3xl);
-    .landing{
-        position: absolute;
-        top:0;
-        z-index: -1;
-        width: 100%;
-        object-fit: cover;
-    }
-    .img_container{
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
-        grid-template-rows: repeat(5, 1fr);
-        width: 100%;
-        padding: 45px 32px 10px;
-        margin-bottom: var(--space-md);
-        h1{
-            font-size: var(--heading-1);
-            color:var(--body-color);
-            text-transform: uppercase;
-            line-height: 90%;
-            font-weight: 500;
-            grid-row: 3/4;
-        }
-    }
+    // margin-bottom: var(--space-3xl);
+    padding: 7.5rem 2rem 5.5rem; 
     .content{
-        padding: 0 32px;
         .about_container{
             .category {
                 color: var(--orange-color);
                 font-size: var(--text-base--small);
                 letter-spacing: -.0275em;
                 font-weight: 500;
-                grid-row: 1;
-                grid-column: 1 / span 12;
             }
             .title {
                 font-size: var(--heading-3);
-                letter-spacing: -0.275px;
+                letter-spacing: -0.0275px;
                 line-height: 100%;
-                margin-bottom: var(--space-md);
+                margin-bottom: var(--space-3xl);
             }
         }
     }
@@ -48,10 +23,11 @@
         gap: 15px;
         margin-bottom: var(--space-xl);
         section{
+            margin-bottom: var(--space-md);
             img{
                 aspect-ratio: 1/1;
-                height: auto;
                 width: 100%;
+                height: auto;
                 margin-bottom: var(--space-xs);
             }
             .card_content{
@@ -62,42 +38,27 @@
                     flex-direction: column;
                     font-size: var(--text-base);
                     .card_category{
-                        color: var(--gray-color);
+                        color: var(--orange-color);
+                        font-size: var(--text-base--small);
                     }
                     .card_title{
                         font-size: var(--heading-2);
+                        font-weight: 500;
+                        letter-spacing: -1px;
                     }
                     .title{
                         font-size: var(--text-base--small);
                         color: var(--gray-color);
                     }
+                    .name {
+                        font-size: var(--heading-6);
+                    }
                     a{
                         color: #1d1d1b;
                         text-decoration: underline;
+                        font-size: var(--heading-6);
                     }
                 }
-            }
-        }
-    }
-}
-@media screen and (max-width: 767px) {
-    .container{
-        img {
-            height: 24rem;
-        }
-        .img_container{
-            padding: 45px 15px 5px;
-            height: 24rem;
-            h1{
-                grid-column: 1/13;
-            }
-        }
-        .content{
-            padding: 0 15px;
-        }
-        .cards{
-            .card_content{
-                padding: 10px 15px;
             }
         }
     }
@@ -105,29 +66,17 @@
 
 @media screen and (min-width: 768px) and (max-width:1024px){
     .container{
-        img {
-            height: 30rem;
-        }
         .img_container{
             height: 30rem;
             h1{
                 grid-column: 1/10;
             }
         }
-        .cards{
-            .card_content{
-                padding: 15px 32px;
-            }
-
-        }
     }
 }
 
 @media screen and (min-width: 1024px) {
     .container{
-        img {
-            height: 35rem;
-        }
         .img_container{
             height: 35rem;
             h1{
@@ -135,17 +84,14 @@
             }
         }
         .cards{
-            padding: 15px 32px;
             grid-template-columns: repeat(3,1fr);
-            .card_content{
-                padding: 0;
-            }
         }
     }
 }
 
 @media screen and (min-width: 1567px) {
     .container{
+        padding: 8.5rem 4rem; 
         .img_container{
             h1{
                 grid-column: 1/8;

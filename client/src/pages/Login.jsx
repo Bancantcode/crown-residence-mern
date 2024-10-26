@@ -56,7 +56,7 @@ const Login = () => {
       <div className={styles.content__container}>
         <h1 className={styles.sign}>Sign In to Crown Residence</h1>
         <GoogleLogin onSuccess={handleGoogleLoginSuccess} onError={() => { console.log('Google Login Failed'); }} />
-        <p className={styles.other__method}>or sign in with email</p>
+        <p className={styles.other__method}><span>----------------</span> or sign in with email <span>----------------</span></p>
         <form className={styles.form} onSubmit={handleLogin}>
           <label>Username or email address *<input name="emailOrUsername" type="text" required value={emailOrUsername} onChange={(e) => setEmailOrUsername(e.target.value)} /></label>
           <label>Password *<input name="password" type="password" required value={password} onChange={(e) => setPassword(e.target.value)} /></label>
