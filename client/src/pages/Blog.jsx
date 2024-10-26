@@ -1,6 +1,6 @@
-import React from 'react'
 import Header from '../components/header'
 import styles from '../assets/styles/blog.module.scss';
+import Footer from '../components/footer';
 
 const blog = [
   {img: '/images/blog_image1.webp', cont: 'A stay to remember: our guide to romantic couple getaways', date: 'February 9, 2024'},
@@ -27,8 +27,8 @@ const Blog = () => {
             </p>
           </div>
           <div className={styles.card_container}>
-            {blog.map((content) =>(
-              <div className={styles.card}>
+            {blog.map((content, index) =>(
+              <div key={index} className={styles.card}>
                 <article>
                   <img src={content.img} alt="" />
                   <p className={styles.content}>{content.cont}</p>
@@ -39,6 +39,7 @@ const Blog = () => {
           </div>
         </section>
       </div>
+      <Footer />
     </main>
   )
 }

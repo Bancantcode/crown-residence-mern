@@ -1,14 +1,12 @@
 .container {
     width: 100%;
     padding: 0 2rem 4.5em 2rem;
-
     .content {
         .location {
             color: var(--gray-color);
             text-transform: uppercase;
             font-size: var(--text-base);
         }
-
         .property__name {
             font-size: var(--heading-1);
             letter-spacing: -0.0275px;
@@ -16,7 +14,6 @@
             font-weight: bold;
             margin-bottom: var(--space-xs);
         }
-
         .flex {
             display: flex;
             font-size: var(--text-base);
@@ -24,31 +21,41 @@
             margin-bottom: var(--space-xs);
             font-size: var(--text-base);
         }
-
         .hosted__by {
             font-size: var(--heading-5);
-            border-top: 1px solid var(--black-color);
-            border-bottom: 1px solid var(--black-color);
+            border-top: 1px solid var(--second-black);
+            border-bottom: 1px solid var(--second-black);
             padding: var(--space-xs) 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: var(--space-md);
+            color: var(--gray-color);
         }
-
         .description {
             width: 100%;
             font-size: var(--heading-6);
             line-height: 120%;
             color: var(--gray-color);
+            margin-bottom: var(--space-3xl);
         }
-
         .feedback {
+            display: flex;
+            gap: 10px;
             .review {
-                display: flex;
-                justify-content: space-between;
                 div {
-                    width: 40%;
+                    width: 100%;
+                    background-color: var(--second-black);
+                    color: hwb(150 94% 5%);
+                    padding: var(--space-md);
+                    border-radius: .75em;
+                    .content {
+                        font-size: var(--text-base);
+                        margin-bottom: var(--space-xs);
+                    }
+                    .name {
+                        padding-top: var(--space-3xs);
+                    }
                 }
             }
         }
@@ -66,15 +73,8 @@
                 width: 100%;
                 line-height: 120%;
             }
-    
             .feedback {
-                .review {
-                    display: flex;
-                    justify-content: space-between;
-                    div {
-                        width: 40%;
-                    }
-                }
+                flex-direction: column;
             }
         }
     }
@@ -83,11 +83,11 @@
 @media screen and (min-width: 768px) and (max-width: 1024px) {
     .container {
         .content {
-            .hosted__by {
+            .hosted__by, .description {
                 width: 80%;
             }
-            .description {
-                width: 80%;
+            .feedback {
+                flex-direction: row;
             }
         }
     }
@@ -96,10 +96,7 @@
 @media screen and (min-width: 1024px) {
     .container {
         .content {
-            .hosted__by {
-                width: 60%;
-            }
-            .description {
+            .hosted__by, .description {
                 width: 60%;
             }
         }
@@ -108,13 +105,12 @@
 
 @media screen and (min-width: 1567px) {
     .container {
-        padding: 0 10.5rem 4em 10.5rem;
+        padding: 0 4rem 4em 4rem;
         width: 60%;
         .content {
             .hosted__by {
                 width: 100%;
             }
-    
             .description {
                 width: 100%;
             }

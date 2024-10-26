@@ -52,24 +52,21 @@ const Description = ({ propertyId }) => {
         <h5 className={styles.hosted__by}>Hosted by {propertyData.host} <i className="ri-arrow-right-up-line"></i></h5>
         <div className={styles.description}>
           <p>{propertyData.description.overview}</p>
+          <br />
+          <p>{propertyData.description.detailed}</p>
         </div>
-        {/* <div className={styles.feedback}>
+        <div className={styles.feedback}>
           {propertyData.reviews.map((review, index) => (
             <div key={index} className={styles.review}>
               <div>
-                <p>{review.content}</p>
-                <p className={styles.name}>{review.reviewerName}</p>
-              </div>
-              <div>
-                <p>{review.content}</p>
+                <p className={styles.content}>{review.content}</p>
+                <hr />
                 <p className={styles.name}>{review.reviewerName}</p>
               </div>
             </div>
-            
           ))}
-        </div> */}
+        </div>
       </div>
-      {/* <div className={styles.date}></div> */}
     </section>
   );
 };

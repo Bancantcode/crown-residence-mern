@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import PropertyImage from '../components/property-image';
 import PropertyDescription from '../components/property-description';
 import PropertyDate from '../components/property-date';
+import Footer from '../components/footer';
 import Header from '../components/header';
 import styles from '../assets/styles/viewproperty.module.scss';
 
@@ -57,6 +58,7 @@ const ViewProperty = () => {
         <PropertyDescription propertyId={property._id} />
         <PropertyDate propertyId={property._id} fetchBookedDatesUrl={fetchBookedDatesUrl} />
       </div>
+      <Footer />
     </main>
   );
 };

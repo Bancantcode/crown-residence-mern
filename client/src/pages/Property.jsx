@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from '../assets/styles/property.module.scss';
 import Header from '../components/header';
+import Footer from '../components/footer'
 
 const Property = () => {
   const [properties, setProperties] = useState([]);
@@ -51,6 +52,7 @@ const Property = () => {
           ))}
         </div>
       </div>
+      <Footer />
     </main>
   );
 };

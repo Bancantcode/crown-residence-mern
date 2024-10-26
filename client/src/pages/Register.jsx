@@ -67,15 +67,8 @@ return (
     <img src={RegisterImage} alt="Sign Up" />
     <div className={styles.content__container}>
       <h1 className={styles.sign}>Sign Up to Crown Residence</h1>
-      <GoogleLogin
-        className={styles.google__login}
-        onSuccess={handleGoogleLoginSuccess}
-        onError={() => {
-          console.log('Login Failed');
-        }}
-        disabled={loading} // Disable if loading
-      />
-      <p className={styles.other__method}>or sign up with email</p>
+      <GoogleLogin className={styles.google__login} onSuccess={handleGoogleLoginSuccess} onError={() => { console.log('Login Failed'); }} disabled={loading} />
+      <p className={styles.other__method}><span>----------------</span> or sign up with email <span>----------------</span></p>
       <form className={styles.form} onSubmit={handleSubmit}>
         <label>Username *<input name="userName" value={formData.userName} onChange={handleChange} type="text" required /></label>
         <label>Email address *<input name="email" value={formData.email} onChange={handleChange} type="email" required /></label>
@@ -86,10 +79,10 @@ return (
             {loading ? 'Signing Up...' : 'Sign Up'} <i className="ri-arrow-right-line"></i>
           </button>
         </div>
-      </form>
-      <div>Already have an account? 
-        <Link className={styles.new__page} to={"/login"}>Login</Link>
+        <div className={styles.account}>Already have an account? 
+        <Link className={styles.new__page} to={"/login"}> Login</Link>
       </div>
+      </form>
     </div>
     <div className={styles.home}>
         <Link to={"/"}><img className={styles.home__nav} src="/images/home.png" width={50} height='50' /></Link>

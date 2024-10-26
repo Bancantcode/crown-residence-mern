@@ -18,7 +18,6 @@
         align-items: center;
         justify-content: end;
         flex-direction: column;
-        padding: 4.5em 2rem 0 2rem;
     }
     .hero__container {
         display: grid;
@@ -75,7 +74,6 @@
                 margin-bottom: var(--space-md);
                 opacity: .95;
                 color: var(--body-color);
-                // font-size: var(--text-base);
                 font-size: var(--heading-6);
                 letter-spacing: .5px;
                 width: 300px;
@@ -102,6 +100,9 @@
 
 @media screen and (max-width: 1024px) {
     .container {
+        .absolute {
+            padding: 4.5em 2rem 0 2rem;
+        }
         .hero__container {
             h2 {
                 font-size: var(--heading-2);
@@ -120,6 +121,9 @@
 
 @media screen and (min-width: 1024px) {
     .container {
+        .absolute {
+            padding: 4.5em 2rem 0 2rem;
+        }
         .hero__container {
             .property__container {
                 display: flex;
@@ -134,9 +138,13 @@
 
 @media screen and (min-width: 1567px) {
     .container {
+        .absolute {
+            padding: 4.5em 4rem 0 4rem;
+        }
         .hero__container {
+            // padding: 4.5em 4rem;
             .property__container {
-                grid-column: 1 / 4;
+                grid-column: 1 / 5;
             }
         }
     }

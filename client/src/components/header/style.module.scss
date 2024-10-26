@@ -1,10 +1,11 @@
 .header{
-    background-color: #1D1D1B;
+    background-color: var(--second-black);
     color: #F0F2F1;
     position: fixed;
     width: 100%;
     box-sizing: border-box;
     padding: 10px;
+    padding: 1em 2rem;
 
     .background{
         background-color: rgb(146, 146, 146);
@@ -110,9 +111,8 @@
     }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
     .header {
-        padding: 15px;
         .bar {
             img {
                 display: none;
@@ -121,9 +121,8 @@
     }
 }
 
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 768px) {
     .header {
-        padding: 1.2em 2rem;
         .bar {
             font-size: 15px;
 
@@ -135,6 +134,12 @@
                 display: block;
             }
         }
+    }
+}
+
+@media screen and (min-width: 1567px) {
+    .header {
+        padding: 1em 4rem;
     }
 }
 
