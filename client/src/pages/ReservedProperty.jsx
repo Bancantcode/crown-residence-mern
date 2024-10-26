@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import styles from '../assets/styles/property.module.scss';
+import styles from '../assets/styles/reservedProperty.module.scss';
 import Header from '../components/header';
+import Footer from '../components/footer';
 
 const ReservedProperty = () => {
   const [reservations, setReservations] = useState([]);
@@ -55,7 +56,9 @@ const ReservedProperty = () => {
     <main>
       <Header />
       <div className={styles.container}>
-        <h2>Your Bookings</h2>
+        <div className={styles.about__container}>
+          <h1 className={styles.title}>Your Reserved <span>---</span> Property</h1>
+        </div>
         {error ? (
           <p className={styles.error}>{error}</p> // Display error message
         ) : reservations.length === 0 ? (
@@ -64,22 +67,32 @@ const ReservedProperty = () => {
           <div className={styles.item_container}>
             {reservations.map((reservation) => (
               <div key={reservation._id} className={styles.booking_details}>
-                {propertyImages[reservation.propertyId._id] && (
-                  <img 
+                <div className={styles.price}> 
+                  <p> ${reservation.totalCost.toFixed(2)}</p>
+                </div>
+                <div>
+                  {propertyImages[reservation.propertyId._id] && (
+                    <img 
                     src={propertyImages[reservation.propertyId._id]} 
                     alt={`Image of ${reservation.propertyId.propertyName}`} 
                     className={styles.property_image} 
-                  />
-                )}
-                <p><strong>Property Name:</strong> {reservation.propertyId.propertyName}</p>
-                <p><strong>Total Cost:</strong> ${reservation.totalCost.toFixed(2)}</p>
-                <p><strong>Reserved From:</strong> {new Date(reservation.startDate).toLocaleDateString()}</p>
-                <p><strong>Reserved To:</strong> {new Date(reservation.endDate).toLocaleDateString()}</p>
+                    />
+                  )}
+                  <p className={styles.card_title}>{reservation.propertyId.propertyName}</p>
+                </div>
+                <div className={styles.content}>
+                  <div className={styles.dates}>
+                    <p className={styles.start}>{new Date(reservation.startDate).toLocaleDateString()}</p>
+                    <p>{new Date(reservation.endDate).toLocaleDateString()}</p>
+                  </div>
+                  <a className={styles.button} href="">Pay Now<i className="ri-arrow-right-line"></i></a>             
+                </div>
               </div>
             ))}
           </div>
         )}
       </div>
+      <Footer />
     </main>
   );
 };
