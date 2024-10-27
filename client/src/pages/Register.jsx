@@ -1,9 +1,9 @@
 import styles from '../assets/styles/signup-signin.module.scss';
 import RegisterImage from '/images/signup1.webp';
+import axios from '../api/axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { GoogleLogin } from '@react-oauth/google';
 import { useState, useContext } from 'react';
-import axios from '../api/axios';
 import { AuthContext } from '../context/AuthContext';
 import { jwtDecode } from 'jwt-decode';
 
@@ -51,11 +51,11 @@ const Register = () => {
     try {
       const response = await axios.post('http://localhost:5000/authGoogle/google/callback', { token });
       console.log('Google login successful:', response.data);
-      // Save the token and username
       localStorage.setItem('token', response.data.token);
       localStorage.setItem('username', response.data.username);
-      navigate('/'); // Redirect to the home page or dashboard
-    } catch (error) {
+      navigate('/');
+    } 
+    catch (error) {
       console.error('Google login failed:', error.response?.data || error.message);
       setErrorMessage(error.response?.data?.message || 'Google login failed! Please try again.');
     }

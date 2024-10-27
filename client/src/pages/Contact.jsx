@@ -1,7 +1,6 @@
 
 import styles from '../assets/styles/contact.module.scss';
-import ContactHero from '/images/contact_hero.webp';
-import { useState, useContext } from 'react';
+import { useState } from 'react';
 import axios from '../api/axios';
 import Header from '../components/header'
 import Footer from '../components/footer';
@@ -35,10 +34,6 @@ const Contact = () => {
     <main>
       <Header />
       <div className={styles.container}>  
-          {/* <img src={ContactHero} className={styles.landing} alt="Hero Image of contact" />  */}
-          {/* <div className={styles.img_container}>
-            <h1>Find your perfect home with us</h1>      
-          </div>  */}
           <section className={styles.content}>
             <div className={styles.about_container}>
               <span className={styles.category}>[REACT OUT]</span>

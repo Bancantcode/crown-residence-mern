@@ -1,5 +1,5 @@
 .container{
-    padding: 4.5rem 2rem;
+    padding: 6.5rem 2rem;
     width: 100%;
     .title {
         font-size: var(--heading-1);
@@ -41,7 +41,7 @@
             }
             .card_title{
                 font-size: var(--heading-3);
-                padding:0 var(--space-2xs);
+                padding:0 var(--space-sm);
                 margin-bottom: var(--space-2xs);
                 font-weight: 600;
                 line-height: 100%;
@@ -49,33 +49,39 @@
             .content{
                 display: flex;
                 justify-content: space-between;
-                gap: var(--space-md);
-                padding: 0 var(--space-2xs) var(--space-xs)  ;
+                flex-direction: column;
+                padding: 0 var(--space-sm) var(--space-sm);
                 font-size: var(--text-base);
+                
                 .dates{
                     display: flex;
-                    gap:var(--space-2xs);
+                    gap: var(--space-2xs);
+                    margin-bottom: var(--space-xs);
                     .start{
                         border-right: 1px solid var(--body-color);
                         padding-right: var(--space-2xs);
                     }
                 }
             }
-            .button{
-                color: var(--body-color);
-                font-size: var(--text-base);
-                font-weight: 500;
-                display: inline-flex;
-                align-items: center;
-                transition: 0.3s;
-                text-transform: uppercase;
-                width: fit-content;
-                i {
-                    transition: 0.4s;
+            .button__click {
+                display: flex;
+                justify-content: space-between;
+                cursor: pointer;
+                .button{
+                    color: var(--body-color);
+                    font-size: var(--text-base);
+                    font-weight: 500;
+                    transition: 0.3s;
+                    text-transform: uppercase;
+                    
+                    i {
+                        transition: 0.4s;
+                        font-size: var(--text-base--large);
+                    }
+                    &:hover i {
+                        margin-left: 10px;
+                    }     
                 }
-                &:hover i {
-                    margin-left: 10px;
-                }     
             }
         }
         
@@ -106,7 +112,7 @@
 
 @media screen and (min-width: 1567px) {
     .container{
-        padding: 4.5rem 4rem;
+        padding: 7.5rem 4rem;
         .item_container{
             grid-template-columns: repeat(4, 1fr);
         }
