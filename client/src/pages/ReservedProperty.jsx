@@ -45,6 +45,7 @@ const ReservedProperty = () => {
 
     fetchReservations();
   }, []);
+  
   // Handle remove property
   const handleRemoveProperty = async (bookingId) => {
     try {
@@ -56,7 +57,8 @@ const ReservedProperty = () => {
 
       // Update state to remove the deleted booking
       setReservations((prevReservations) => prevReservations.filter(reservation => reservation._id !== bookingId));
-    } catch (error) {
+    } 
+    catch (error) {
       console.error('Error removing booking:', error);
       alert(error.message);
     }

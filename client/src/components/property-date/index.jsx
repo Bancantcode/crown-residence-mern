@@ -50,13 +50,6 @@ export default function CustomDateRangePicker({
   };
 
   const reserveBooking = async () => {
-    // Log the required values for debugging
-    // console.log("UserId:", userId);
-    // console.log("PropertyId:", propertyId);
-    // console.log("Start Date:", dateRange.from);
-    // console.log("End Date:", dateRange.to);
-    // console.log("Price Per Night:", pricePerNight);
-
     // Validate required fields
     if (!userId || !propertyId || !dateRange.from || !dateRange.to || pricePerNight === null) {
       setError("Missing required fields for booking.");
@@ -73,8 +66,8 @@ export default function CustomDateRangePicker({
     const reservationData = {
       userId,
       propertyId,
-      startDate: dateRange.from.toISOString(), // Convert to ISO string
-      endDate: dateRange.to.toISOString(), // Convert to ISO string
+      startDate: dateRange.from.toISOString(),
+      endDate: dateRange.to.toISOString(),
       totalCost,
     };
 
@@ -89,7 +82,7 @@ export default function CustomDateRangePicker({
       });
 
       if (!response.ok) {
-        const errorData = await response.json(); // Capture error message from server
+        const errorData = await response.json();
         throw new Error(errorData.message || "Failed to reserve booking");
       }
 
@@ -100,13 +93,15 @@ export default function CustomDateRangePicker({
       if (onReserveSuccess) {
         onReserveSuccess(reservationData);
       }
+
+      // Alert only on successful reservation
+      alert(`Property reserved successfully!\n\nReservation Details:\n- Start Date: ${format(dateRange.from, "MMM dd, yyyy")}\n- End Date: ${format(dateRange.to, "MMM dd, yyyy")}\n- Total Nights: ${totalNights}\n- Total Cost: $${totalCost.toFixed(2)}\n- Total Tax: $${totalTax.toFixed(2)}\n- Total Cost with Tax: $${totalCostWithTax.toFixed(2)}\n\nCheck your reservation here: \nhttp://localhost:5173/reserved-property`);
     } 
     catch (err) {
       console.error("Error:", err.message);
       setError(err.message);
       alert("Reservation Failed");
     }
-    alert(`Property reserved successfully!\n\nReservation Details:\n- Start Date: ${format(dateRange.from, "MMM dd, yyyy")}\n- End Date: ${format(dateRange.to, "MMM dd, yyyy")}\n- Total Nights: ${totalNights}\n- Total Cost: $${totalCost.toFixed(2)}\n- Total Tax: $${totalTax.toFixed(2)}\n- Total Cost with Tax: $${totalCostWithTax.toFixed(2)}\n\nCheck your reservation here: \nhttp://localhost:5173/reserved-property`);
   };
 
   const isDateBlocked = (date) => {
