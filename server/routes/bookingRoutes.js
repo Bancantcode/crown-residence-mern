@@ -16,6 +16,7 @@ const calculateTotalCost = (startDate, endDate, pricePerNight) => {
 };
 
 // POST /bookings - Create a new booking
+// POST /bookings - Create a new booking
 router.post('/bookings', async (req, res) => {
   const { userId, propertyId, startDate, endDate } = req.body;
 
@@ -28,15 +29,31 @@ router.post('/bookings', async (req, res) => {
   }
 
   try {
+    // Check for overlapping bookings for the specified property
+    const overlappingBooking = await Booking.findOne({
+      propertyId,
+      $or: [
+        { startDate: { $lt: new Date(endDate) }, endDate: { $gt: new Date(startDate) } }
+      ]
+    });
+
+    if (overlappingBooking) {
+      return res.status(400).json({ message: 'This property is already booked for the requested dates.' });
+    }
+
+    // Fetch property details
     const property = await Property.findById(propertyId);
     if (!property) return res.status(404).json({ message: 'Property not found.' });
 
+    // Fetch user details
     const user = await User.findById(userId);
     if (!user) return res.status(404).json({ message: 'User not found.' });
 
+    // Calculate the total cost
     const totalCost = calculateTotalCost(startDate, endDate, property.pricePerNight || 0);
     if (totalCost <= 0) return res.status(400).json({ message: 'Invalid booking cost.' });
 
+    // Create new booking
     const newBooking = new Booking({
       userId,
       propertyId,
@@ -52,6 +69,7 @@ router.post('/bookings', async (req, res) => {
     res.status(500).json({ message: 'Internal server error.' });
   }
 });
+
 
 // GET /bookings - Get all bookings
 router.get('/bookings', async (req, res) => {
@@ -92,6 +110,21 @@ router.get('/bookings/property/:propertyId/dates', async (req, res) => {
     res.status(200).json(bookedDates);
   } catch (error) {
     console.error('Error fetching booked dates:', error);
+    res.status(500).json({ message: 'Internal server error.' });
+  }
+});
+// DELETE /bookings/:bookingId - Delete a specific booking by ID
+router.delete('/bookings/:bookingId', async (req, res) => {
+  const { bookingId } = req.params;
+
+  try {
+    const deletedBooking = await Booking.findByIdAndDelete(bookingId);
+    if (!deletedBooking) {
+      return res.status(404).json({ message: 'Booking not found.' });
+    }
+    res.status(200).json({ message: 'Booking deleted successfully.' });
+  } catch (error) {
+    console.error('Error deleting booking:', error);
     res.status(500).json({ message: 'Internal server error.' });
   }
 });

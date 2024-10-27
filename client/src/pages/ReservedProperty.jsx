@@ -45,6 +45,22 @@ const ReservedProperty = () => {
 
     fetchReservations();
   }, []);
+  // Handle remove property
+  const handleRemoveProperty = async (bookingId) => {
+    try {
+      const response = await fetch(`http://localhost:5000/bookings/${bookingId}`, {
+        method: 'DELETE',
+      });
+
+      if (!response.ok) throw new Error('Failed to remove the booking.');
+
+      // Update state to remove the deleted booking
+      setReservations((prevReservations) => prevReservations.filter(reservation => reservation._id !== bookingId));
+    } catch (error) {
+      console.error('Error removing booking:', error);
+      alert(error.message);
+    }
+  };
 
   if (loading) {
     return <p>Loading reservations...</p>;
@@ -85,8 +101,7 @@ const ReservedProperty = () => {
                   </div>
                   <div className={styles.button__click}>
                     <a className={styles.button} onClick={showAlert}>Pay Now<i className="ri-arrow-right-up-line"></i></a>             
-                    <a className={styles.button} href="">Remove Property<i className="ri-arrow-right-up-line"></i></a>             
-                  </div>
+                    <a className={styles.button} onClick={() => handleRemoveProperty(reservation._id)}>Remove Property<i className="ri-arrow-right-up-line"></i></a>                  </div>
                 </div>
               </div>
             ))}

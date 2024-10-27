@@ -104,6 +104,7 @@ export default function CustomDateRangePicker({
     catch (err) {
       console.error("Error:", err.message);
       setError(err.message);
+      alert("Reservation Failed");
     }
     alert(`Property reserved successfully!\n\nReservation Details:\n- Start Date: ${format(dateRange.from, "MMM dd, yyyy")}\n- End Date: ${format(dateRange.to, "MMM dd, yyyy")}\n- Total Nights: ${totalNights}\n- Total Cost: $${totalCost.toFixed(2)}\n- Total Tax: $${totalTax.toFixed(2)}\n- Total Cost with Tax: $${totalCostWithTax.toFixed(2)}\n\nCheck your reservation here: \nhttp://localhost:5173/reserved-property`);
   };
