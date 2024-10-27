@@ -35,25 +35,34 @@ router.post('/register', async (req, res) => {
 
 // Login route
 router.post('/login', async (req, res) => {
-    const { email, password } = req.body;
+    const { emailOrUsername, password } = req.body;
 
-    if (!email || !password) {
+    if (!emailOrUsername || !password) {
         return res.status(400).json({ message: 'Please fill in all fields' });
     }
 
     try {
-        const user = await User.findOne({ email });
+        const user = await User.findOne({
+            $or: [{ email: emailOrUsername }, { userName: emailOrUsername }],
+        });
+
         if (!user) {
-            return res.status(400).json({ message: 'Invalid email or password' });
+            return res.status(400).json({ message: 'Invalid email/username or password' });
         }
 
         const isPasswordValid = await bcrypt.compare(password, user.password);
         if (!isPasswordValid) {
-            return res.status(400).json({ message: 'Invalid email or password' });
+            return res.status(400).json({ message: 'Invalid email/username or password' });
         }
 
         const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-        res.header('Authorization', `Bearer ${token}`).json({ token });
+        
+        // Include userID in the response
+        res.header('Authorization', `Bearer ${token}`).json({
+            token,
+            username: user.userName,
+            userID: user._id // Include userID here
+        });
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: 'Server error' });

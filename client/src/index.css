@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=News+Cycle:wght@400;700&family=Pixelify+Sans:wght@400..700&family=Tiny5&display=swap');
 @font-face {
   font-family: 'Neue Montreal Regular', sans-serif;
   src: url('../public/fonts/NeueMontreal-Regular.otf');
@@ -26,6 +27,7 @@
   font-style: normal;
 }
 
+
 :root {
   --text-base--small: clamp(0.821rem, 0.3071rem + 0.4647vi, 0.8943rem);
   --text-base: clamp(0.9rem, 0.9rem + 0.07vw, 1.05rem);
@@ -38,9 +40,7 @@
   --heading-1: clamp(2.4414rem, 1.7858rem + 3.278vi, 4.736rem);
   --heading-display: clamp(2.6518rem, 1.88rem + 3.459vi, 7.3131rem);
   --heading-expertise: clamp(3.1518rem, 1.88rem + 5.459vi, 9.3131rem);
-
   --heading-number: clamp(1.6518rem, 2.034rem + 7.959vi, 8.3131rem);
-  --space-button: clamp(0.4725rem, 0.4846rem + 0.0793vi, 0.625rem);
   --space-3xs: clamp(0.3125rem, 0.3125rem + 0vi, 0.3125rem);
   --space-2xs: clamp(0.5625rem, 0.5446rem + 0.0893vi, 0.625rem);
   --space-xs: clamp(0.875rem, 0.8571rem + 0.0893vi, 0.9375rem);
@@ -51,14 +51,10 @@
   --space-2xl: clamp(4.5rem, 4.3571rem + 0.7143vi, 5rem);
   --space-3xl: clamp(5.75rem, 6.2571rem + 1.2023vi, 7.25rem);
   --gap-fluid: clamp(1rem, 0.8571rem + 1.0143vi, 3.5rem);
-  --column-count: 12;
-  --grid-main: repeat(var(--column-count), minmax(0, 1fr));
-  --grid-gap-total: calc(var(--gap-fluid)*(var(--column-count) - 1));
-  --column-width: calc((100% - var(--grid-gap-total)) / var(--column-count) + var(--gap-fluid));
-
+  --button-space-x: 12px;
+  --button-space-y: var(--space-xs);
   --tw-bg-opacity: 1;
   --tw-text-opacity: 1;
-
   --super-black: rgb(0 0 0 / var(--tw-text-opacity));
   --second-black: rgb(29 29 27 / var(--tw-text-opacity));
   --black-color: rgb(19 16 12 / var(--tw-text-opacity));
@@ -66,11 +62,8 @@
   --body-color: rgb(243 243 241 / var(--tw-text-opacity));
   --orange-color: rgb(166 77 51 / var(--tw-text-opacity)); 
   --gray-color: rgb(94 90 85 / var(--tw-text-opacity));
-  --light-gray-color: #D9D9D9;
-  
-
+  --light-gray-color: rgb(217, 217, 217);
   --background-color: rgb(235 230 219 / var(--tw-bg-opacity));
-
   --heading-mobile: clamp(3.518rem, 2.034rem + 9.159vi, 3.3131rem);
   --heading-tablet: clamp(8.5518rem, 2.034rem + 7.959vi, 12.3131rem);
   --heading-ipad: clamp(11.318rem, 2.034rem + 6.959vi, 12.3131rem);
@@ -112,14 +105,23 @@ header {
   left: 0;
   width: 100%;
   z-index: 10;
-  /* padding: var(--space-lg); */
 }
 
 nav {
   display: flex;
   justify-content: space-between;
 }
-/* 
+
+/* =================== SCROLL BAR =================== */
+
 ::-webkit-scrollbar {
-  width: 10px;
-} */
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--body-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--second-black);
+}

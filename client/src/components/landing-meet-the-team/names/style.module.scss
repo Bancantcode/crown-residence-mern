@@ -1,0 +1,41 @@
+.project {
+    border-top: 2px solid var(--second-black);
+    padding-top: 0.8vw;
+    padding-bottom: 0.8vw;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    &:last-of-type {
+        border-bottom: 2px solid var(--second-black);
+    }
+
+    p {
+        font-size: 5vw;
+        margin: 0px;
+
+        &:nth-of-type(1) {
+            margin-right: 0.75vw;
+        }
+        &:nth-of-type(2) {
+            margin-left: 0.75vw;
+        }
+    }
+
+    .imgContainer {
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        width: 0;
+
+        img {
+            width: 10vw;
+            filter: grayscale(100%);
+            // &:hover {
+            //     filter: grayscale(20%);
+            // }
+        }
+    }
+}
+  

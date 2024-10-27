@@ -1,0 +1,89 @@
+.container{
+    color: #1D1D1B;
+    padding: 6rem 2rem;
+
+    .blog{
+        .title{
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            column-gap: 5px;
+            row-gap: 10px;
+            grid-template-rows: repeat(3,auto);
+            margin-bottom: var(--space-xl);
+            h2{
+                grid-column: 1/12;
+                grid-row: 1/2;
+                font-size: var(--heading-2);
+                letter-spacing: -2px;
+                line-height: 100%;
+            }
+            p{
+                grid-column: 1 / 10;
+                grid-row: 2;  
+                line-height: 120%;
+                opacity: .95;
+                color: var(--gray-color);
+                font-size: var(--heading-6);
+                
+            }
+        }
+        .card_container{
+            grid-template-columns: repeat(2, 1fr);
+            display: grid;
+            gap: 15px;
+            .card{
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 100%;
+                margin-bottom: var(--space-md);
+                article{
+                    img{
+                        aspect-ratio: 1/1;
+                        background-color: grey;
+                        width: 100%;
+                        margin-bottom: var(--space-2xs);
+                    }
+                    .content{
+                        line-height: 105%;
+                        font-size: var(--heading-6);
+                    }
+                }
+                .date{
+                color: var(--black-color);
+                    font-weight: 500;
+                    font-size: var(--text-base);
+                }
+             }
+        }
+    } 
+}
+@media screen and (max-width: 767px) {
+    .container{
+        padding: 5rem 1rem 2.5rem;
+        .blog{
+            .title{
+                margin-bottom: var(--space-lg);
+            }
+            .card_container{
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .container{
+        padding: 8rem 2rem;
+        .blog{
+            .title{
+                p{
+                    grid-column: 1 / 6;
+                }
+            }
+            .card_container{
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    }
+}

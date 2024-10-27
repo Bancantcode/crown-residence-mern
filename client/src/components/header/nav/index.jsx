@@ -18,8 +18,8 @@ const links = [
         src: "2.webp"
     },
     {
-        title: "About Us",
-        href: "/about",
+        title: "Reserved",
+        href: "/reserved-property",
         src: "3.webp"
     },
     {

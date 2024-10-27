@@ -1,0 +1,13 @@
+.flex {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 auto var(--space-3xl) auto;
+}
+
+@media screen and (min-width: 1567px) {
+    .flex {
+        flex-direction: row;
+        max-width: 1920px
+    }
+}

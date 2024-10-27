@@ -15,9 +15,14 @@
             letter-spacing: -1px;
             line-height: 100%;
             color: var(--second-black);
+            font-size: var(--heading-3);
         }
         .other__method {
             color: var(--gray-color);
+            margin-bottom: var(--space-md);
+            span {
+                font-family: "News Cycle", serif;
+            }
         }
         .form {
             display: flex;
@@ -43,6 +48,17 @@
             width: 100%;
             display: flex;
             flex-direction: column;
+            .checkbox {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: start;
+                gap: .5em;
+                .box {
+                    width: 20px;
+                    margin-top: 3px;
+                }
+            }
             .submit__button {
                 display: flex;
                 align-items: center;
@@ -66,14 +82,28 @@
                     font-weight: bold;
                 }
             }
-            div {
-                color: var(--gray-color);
+        }
+        .account {
+            color: var(--gray-color);
+            font-size: var(--text-base);
 
-                .new__page {
-                    color: var(--black-color);
-                    font-weight: bold;
-                }
+            .new__page {
+                color: var(--black-color);
+                font-weight: 500;
             }
+        }
+    }
+    .home {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        padding: 15px;
+        border-radius: 50%;
+        border: 3px solid var(--black-color);
+        margin: 20px;
+        .home__nav {
+            height: 50px;
+            width: 50px;
         }
     }
 }
@@ -93,6 +123,15 @@
                 label {
                     flex-direction: column;
                 }
+            }
+        }
+        .home {
+            margin: 10px;
+            padding: 10px;
+            .home__nav {
+                display: block;
+                height: 20px;
+                width: 20px;
             }
         }
     }
