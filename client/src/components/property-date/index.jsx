@@ -51,11 +51,11 @@ export default function CustomDateRangePicker({
 
   const reserveBooking = async () => {
     // Log the required values for debugging
-    console.log("UserId:", userId);
-    console.log("PropertyId:", propertyId);
-    console.log("Start Date:", dateRange.from);
-    console.log("End Date:", dateRange.to);
-    console.log("Price Per Night:", pricePerNight);
+    // console.log("UserId:", userId);
+    // console.log("PropertyId:", propertyId);
+    // console.log("Start Date:", dateRange.from);
+    // console.log("End Date:", dateRange.to);
+    // console.log("Price Per Night:", pricePerNight);
 
     // Validate required fields
     if (!userId || !propertyId || !dateRange.from || !dateRange.to || pricePerNight === null) {
@@ -65,6 +65,9 @@ export default function CustomDateRangePicker({
 
     const totalNights = Math.max(0, Math.ceil((dateRange.to - dateRange.from) / (1000 * 60 * 60 * 24)));
     const totalCost = totalNights * pricePerNight;
+    const taxPerNight = 5;
+    const totalTax = totalNights * taxPerNight;
+    const totalCostWithTax = totalCost + totalTax;
 
     // Create reservation data
     const reservationData = {
@@ -97,11 +100,13 @@ export default function CustomDateRangePicker({
       if (onReserveSuccess) {
         onReserveSuccess(reservationData);
       }
-    } catch (err) {
+    } 
+    catch (err) {
       console.error("Error:", err.message);
       setError(err.message);
     }
-};
+    alert(`Property reserved successfully!\n\nReservation Details:\n- Start Date: ${format(dateRange.from, "MMM dd, yyyy")}\n- End Date: ${format(dateRange.to, "MMM dd, yyyy")}\n- Total Nights: ${totalNights}\n- Total Cost: $${totalCost.toFixed(2)}\n- Total Tax: $${totalTax.toFixed(2)}\n- Total Cost with Tax: $${totalCostWithTax.toFixed(2)}\n\nCheck your reservation here: \nhttp://localhost:5173/reserved-property`);
+  };
 
   const isDateBlocked = (date) => {
     return bookedDates.some(({ startDate, endDate }) => {
