@@ -9,7 +9,7 @@ const Index = () => {
   return (
     <section className={styles.container}>
         <div className={styles.about__container}>
-            <span className={styles.category}>[ABOUT US]</span>
+            <span className={styles.category}>[BLOG]</span>
             <h1 className={styles.title}><span>At Crown Residence</span>, we blend unparalleled expertise with visionary design to elevate the lifestyle of our distinguished clientele.</h1>
         </div>
         <div className={styles.about__flex}>
@@ -17,7 +17,7 @@ const Index = () => {
                 <p>At Crown Residence, we seamlessly merge decades of industry expertise with a forward-thinking approach to design and development. Our team is dedicated to curating luxurious spaces that embody both aesthetic excellence and functional sophistication. Every project we undertake is a reflection of our commitment to delivering exceptional results tailored to the unique needs of our clients.</p>
                 <br />
                 <p>We believe that true luxury lies in the details, and that’s why we go beyond standard expectations to create residences that inspire and elevate. From personalized design concepts to strategic commercial insights, our goal is to craft spaces that not only captivate but also enrich the lifestyles of those who experience them. At Crown Residence, your vision is our blueprint.</p>
-                <a href="/about">About Us<i className="ri-arrow-right-line"></i></a>
+                <a href="/blog">View Blog<i className="ri-arrow-right-line"></i></a>
             </div>
             <div className={styles.about__image}>
                 <img className={styles.main__image} src={Image1} alt="main image" />
