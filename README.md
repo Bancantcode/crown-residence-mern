@@ -2,6 +2,8 @@
 
 <p>Crown Residence is a property reservation website inspired by Airbnb. This project was developed as part of our final project in the Web Server and Client Services (6WCSERVER) course. The website allows users to browse, reserve, and manage property reservations in a user-friendly interface.</p>
 
+<p>Figma link: https://www.figma.com/design/FUyzMa2JVawvONFsYd0vvw/WCSERVER-REAL-ESTATE-WEBAPP?node-id=0-1&t=qwgqCQrICKH1IvU8-1</p>
+
 # Features
 - Property Listings: Browse through a collection of properties available for reservation.
 - Property Details: View detailed information about each property, including images, descriptions, amenities and feedbacks.
